@@ -12,7 +12,11 @@ import java.util.Optional;
 public class RequestApi {
     Response response = null;
     private final OkHttpClient client = new OkHttpClient();
-    private final String url = "https://the-one-api.dev/v2/book";
+    private String url = "https://the-one-api.dev/v2/";
+
+    public RequestApi(String path){
+        url += path;
+    }
 
     public void runClient(String token) throws Exception  {
         Request request = new Request.Builder()
