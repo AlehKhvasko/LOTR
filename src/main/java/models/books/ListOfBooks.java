@@ -1,14 +1,14 @@
-package models.doc;
+package models.books;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Doc {
-    @JsonProperty("_id")
-    public String id;
-    @JsonProperty("name")
-    public String name;
+public class ListOfBooks {
+        @JsonProperty("docs")
+        public List<DescriptionOfBooks> docs;
 }

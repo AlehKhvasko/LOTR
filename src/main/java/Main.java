@@ -1,11 +1,15 @@
-import client.utils.RequestApi;
-
-import java.io.IOException;
+import client.LOTRClient;
+import models.books.ListOfBooks;
+import models.movies.ListOfMovies;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        RequestApi requestApi = new RequestApi("book");
-        requestApi.runClient("Okk8iRZULkd60EjA274Q");
-        System.out.println(requestApi.getResponse());
+        LOTRClient client = new LOTRClient();
+        ListOfBooks listOfBooks = client.requestAllBooks();
+        ListOfMovies listOfMovies = client.requestAllMovies();
+
+        listOfBooks.getDocs().forEach(e-> System.out.println(e.name));
+        listOfMovies.getDocs().forEach(e-> System.out.println(e.name));
+
     }
 }
