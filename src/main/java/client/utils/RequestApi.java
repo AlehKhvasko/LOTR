@@ -3,7 +3,9 @@ package client.utils;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -19,13 +21,15 @@ public class RequestApi {
                 .build();
         try {
             response = client.newCall(request).execute();
-            System.out.println("Server: " + response.header("anykey"));
         }catch (Exception e){
             System.out.println(e.getMessage() + response);
         }
     }
 
     public String getResponse() throws IOException {
-        return response.body().string();
+        if (!response.isSuccessful()){
+            System.out.println("Error in response " + response);
+        }
+        return Optional.of(response.body().string()).orElseThrow(()->new IllegalStateException("Data is empty"));
     }
 }
