@@ -7,4 +7,5 @@ this application will provide you with information about the books,
 the movie trilogy, many characters and quotes.
 
 This project is totally non-profit and fan-made!
+
 ![](https://images.indianexpress.com/2017/12/lord-of-the-rings-759.jpg)
