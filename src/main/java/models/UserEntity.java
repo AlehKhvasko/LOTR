@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import models.books.DescriptionOfBooks;
 import models.books.ListOfBooks;
+import models.characters.ListOfCharacters;
+import models.movies.ListOfMovies;
 
 import java.util.List;
 import java.util.Set;
@@ -32,5 +34,13 @@ public class UserEntity {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_db_id")
     private List<ListOfBooks> listOfBooks;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_db_id")
+    private List<ListOfMovies> listOfMovies;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_db_id")
+    private List<ListOfCharacters> listOfCharacters;
 
 }

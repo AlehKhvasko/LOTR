@@ -17,6 +17,6 @@ public class ListOfBooks {
         @Column(name = "id")
         private Integer id;
 
-        @JsonProperty("docs")
+        @OneToMany
         public List<DescriptionOfBooks> docs;
 }
