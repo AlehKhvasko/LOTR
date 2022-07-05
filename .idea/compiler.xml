@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="LOTR" />
+        <module name="LOTR-app" />
       </profile>
     </annotationProcessing>
   </component>

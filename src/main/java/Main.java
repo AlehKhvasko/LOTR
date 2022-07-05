@@ -1,36 +1,24 @@
-import client.LOTRClient;
-import models.UserEntity;
-import models.books.ListOfBooks;
-import models.characters.ListOfCharacters;
-import models.movies.ListOfMovies;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import utils.SessionFactoryImpl;
+import client.utils.TheOneApiClient;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import mapper.ListOfBookMapper;
+import models.entity.ListOfBookEntity;
+import okhttp3.OkHttpClient;
+import repository.BookRepository;
+import service.BookService;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        LOTRClient client1 = new LOTRClient();
-        //LOTRClient client2 = new LOTRClient();
-        //LOTRClient client3 = new LOTRClient();
-        ListOfBooks listOfBooks = client1.requestAllBooks();
-        //ListOfMovies listOfMovies = client2.requestAllMovies();
-        //ListOfCharacters listOfCharacters = client3.requestAllCharacters();
+        TheOneApiClient theOneApiClient = new TheOneApiClient(new OkHttpClient(), new ObjectMapper());
 
-        listOfBooks.getDocs().forEach(e-> System.out.println(e.name));
-        //listOfMovies.getDocs().forEach(e-> System.out.println(e.name));
-        //listOfCharacters.getDocs().forEach(e-> System.out.println(e.name));
+        var listOfBooksDto = theOneApiClient.getBook();
 
-        Session session  = new SessionFactoryImpl().getSession().getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
+        System.out.println();
 
-        UserEntity user = new UserEntity();
-        user.builder()
-                .firstName("Al")
-                .lastName("K")
-                .companyName("home")
-                .build();
+        ListOfBookMapper listOfBookMapper = new ListOfBookMapper();
+//        ListOfBookEntity bookEntity = listOfBookMapper.toListOfBookEntity(listOfBooksDto);
 
-        session.persist(user);
-        transaction.commit();
+//        BookService bookService = new BookService(new BookRepository());
+//        bookService.save(bookEntity);
+
     }
 }

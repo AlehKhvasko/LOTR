@@ -8,12 +8,12 @@ import org.hibernate.cfg.Configuration;
 @Getter
 public class SessionFactoryImpl {
     private SessionFactory sessionFactoryUtil;
-    Session session;
+    private Session session;
 
-    public  SessionFactoryImpl(){
+    public SessionFactoryImpl() {
         sessionFactoryUtil = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .buildSessionFactory();
-        sessionFactoryUtil.getCurrentSession();
+        session = sessionFactoryUtil.getCurrentSession();
     }
 }
