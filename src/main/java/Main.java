@@ -1,7 +1,11 @@
 import client.LOTRClient;
+import models.UserEntity;
 import models.books.ListOfBooks;
 import models.characters.ListOfCharacters;
 import models.movies.ListOfMovies;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import utils.SessionFactoryImpl;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -16,5 +20,17 @@ public class Main {
         //listOfMovies.getDocs().forEach(e-> System.out.println(e.name));
         //listOfCharacters.getDocs().forEach(e-> System.out.println(e.name));
 
+        Session session  = new SessionFactoryImpl().getSession().getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+
+        UserEntity user = new UserEntity();
+        user.builder()
+                .firstName("Al")
+                .lastName("K")
+                .companyName("home")
+                .build();
+
+        session.persist(user);
+        transaction.commit();
     }
 }

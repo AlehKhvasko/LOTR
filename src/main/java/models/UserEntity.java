@@ -1,6 +1,8 @@
 package models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import models.books.DescriptionOfBooks;
@@ -11,8 +13,10 @@ import models.movies.ListOfMovies;
 import java.util.List;
 import java.util.Set;
 
+@Builder
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "user_db")
 public class UserEntity {
