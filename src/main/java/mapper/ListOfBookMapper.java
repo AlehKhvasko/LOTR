@@ -10,15 +10,15 @@ import java.util.stream.Collectors;
 
 public class ListOfBookMapper {
 
-//    public ListOfBookEntity toListOfBookEntity(ListOfBooksDto listOfBooksDto) {
-//        List<DescriptionOfBookEntity> descriptionOfBookEntities = listOfBooksDto.getDocs().stream()
-//                .map(this::toDescriptionOfBookEntity)
-//                .collect(Collectors.toList());
-//
-//        return ListOfBookEntity.builder()
-//                .descriptionOfBookEntityList(descriptionOfBookEntities)
-//                .build();
-//    }
+   public ListOfBookEntity toListOfBookEntity(ListOfBooksDto listOfBooksDto) {
+        List<DescriptionOfBookEntity> descriptionOfBookEntities = listOfBooksDto.getDocs().stream()
+                .map(this::toDescriptionOfBookEntity)
+                .collect(Collectors.toList());
+
+       return ListOfBookEntity.builder()
+                .descriptionOfBookEntityList(descriptionOfBookEntities)
+               .build();
+    }
 
     private DescriptionOfBookEntity toDescriptionOfBookEntity(DescriptionOfBookDto descriptionOfBookDto) {
         return DescriptionOfBookEntity.builder()
